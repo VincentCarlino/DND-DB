@@ -1,0 +1,101 @@
+class_name	class_level	class_abilities
+Barbarian	1	"Rage, Unarmored Defense"
+Barbarian	2	"Reckless Attack, Danger Sense"
+Barbarian	3	Primal Path
+Barbarian	4	Ability Score Improvement
+Barbarian	5	"Extra Attack, Fast Movement"
+Barbarian	6	Path feature
+Barbarian	7	Feral Instinct
+Barbarian	8	Ability Score Improvement
+Barbarian	9	Brutal Critical (1 die)
+Barbarian	10	Path feature
+Barbarian	11	Relentless Rage
+Barbarian	12	Ability Score Improvement
+Barbarian	13	Brutal Critical (2 dice)
+Barbarian	14	Path feature
+Barbarian	15	Persistent Rage
+Barbarian	16	Ability Score Improvement
+Barbarian	17	Brutal Critical (3 dice)
+Barbarian	18	Indomitable Might
+Barbarian	19	Ability Score Improvement
+Barbarian	20	Primal Champion
+Bard	1	"Spellcasting, Bardic Inspiration (d6)"
+Bard	2	"Jack of All Trades, Song of Rest (d6)"
+Bard	3	"Bard College, Expertise"
+Bard	4	Ability Score Improvement
+Bard	5	"Bardic Inspiration (d8), Font of Inspiration"
+Bard	6	"Countercharm, Bard College feature"
+Bard	7	
+Bard	8	Ability Score Improvement
+Bard	9	Song of Rest (d8)
+Bard	10	"Bardic Inspiration (d10), Expertise, Magical Secrets"
+Bard	11	
+Bard	12	Ability Score Improvement
+Bard	13	Song of Rest (d10)
+Bard	14	"Magical Secrets, Bard College feature"
+Bard	15	Bardic Inspiration (d12)
+Bard	16	Ability Score Improvement
+Bard	17	Song of Rest (d12)
+Bard	18	"Magical Secrets, Bard College feature"
+Bard	19	Ability Score Improvement
+Bard	20	Superior Inspiration
+Paladin	1	"Divine Sense, Lay on Hands"
+Paladin	2	"Fighting Style, Spellcasting, Divine Smite"
+Paladin	3	"Divine Health, Sacred Oath"
+Paladin	4	Ability Score Improvement
+Paladin	5	Extra Attack
+Paladin	6	Aura of Protection
+Paladin	7	Sacred Oath feature
+Paladin	8	Ability Score Improvement
+Paladin	9	
+Paladin	10	Aura of Courage
+Paladin	11	Improved Divine Smite
+Paladin	12	Ability Score Improvement
+Paladin	13	
+Paladin	14	Cleansing Touch
+Paladin	15	Sacred Oath feature
+Paladin	16	Ability Score Improvement
+Paladin	17	
+Paladin	18	Aura improvements
+Paladin	19	Ability Score Improvement
+Paladin	20	Sacred Oath feature
+Rogue	1	"Expertise, Sneak Attack, Theives' Cant"
+Rogue	2	Cunning Action
+Rogue	3	Roguish Archetype
+Rogue	4	Ability Score Improvement
+Rogue	5	Uncanny Dodge
+Rogue	6	Expertise
+Rogue	7	Evasion
+Rogue	8	Ability Score Improvement
+Rogue	9	Roguish Archetype feature
+Rogue	10	Ability Score Improvement
+Rogue	11	Reliable Talent
+Rogue	12	Ability Score Improvement
+Rogue	13	Roguish Archetype feature
+Rogue	14	Blindsense
+Rogue	15	Slippery Mind
+Rogue	16	Ability Score Improvement
+Rogue	17	Roguish Archetype feature
+Rogue	18	Elusive
+Rogue	19	Ability Score Improvement
+Rogue	20	Stroke of Luck
+Sorceror	1	"Spellcasting, Sorcerous Origin"
+Sorcerer	2	Font of Magic
+Sorcerer	3	Metamagic
+Sorcerer	4	Ability Score Improvement
+Sorcerer	5	
+Sorcerer	6	Sorcerous Origin feature
+Sorcerer	7	
+Sorcerer	8	Ability Score Improvement
+Sorcerer	9	
+Sorcerer	10	Metamagic
+Sorcerer	11	
+Sorcerer	12	Ability Score Improvement
+Sorcerer	13	
+Sorcerer	14	Sorcerous Origin feature
+Sorcerer	15	
+Sorcerer	16	Ability Score Improvement
+Sorcerer	17	Metamagic
+Sorcerer	18	Sorcerous Origin feature
+Sorcerer	19	Ability Score Improvement
+Sorcerer	20	Sorcerous Restoration
