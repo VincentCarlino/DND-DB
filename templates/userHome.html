@@ -7,7 +7,7 @@
  
     <script src="../static/js/jquery-3.3.1.min.js"></script>
     
-    <link href="../userhome.css" rel="stylesheet">
+    <link href="../static/userhome.css" rel="stylesheet">
     <script>
         $(function(){
             $.ajax({
@@ -21,20 +21,64 @@
             .append($('<h4>')
                 .attr('class', 'list-group-item-heading'),
                 $('<p>')
-                .attr('class', 'list-group-item-text')));
+                .attr('class', 'list-group-item-text age'),
+                $('<div>')
+                .attr('class', 'stats')
+                .append($('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text str'),
+                        $('<p>')
+                        .text('Strength')),
+                    $('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text dex'),
+                        $('<p>')
+                        .text('Dexterity')),
+                    $('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text con'),
+                        $('<p>')
+                        .text('Constitution')),
+                    $('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text wis'),
+                        $('<p>')
+                        .text('Wisdom')),
+                    $('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text int'),
+                        $('<p>')
+                        .text('Intelligence')),
+                    $('<div>')
+                    .attr('class', 'stat')
+                    .append($('<p>')
+                        .attr('class', 'list-group-item-text cha'),
+                        $('<p>')
+                        .text('Charisma')))));
                                     
                     
                     console.log(res);
-                    var classObj = JSON.parse(res);
-                    console.log(classObj);
+                    var characterObj = JSON.parse(res);
+                    console.log(characterObj);
                     var c = '';
                     
-                    $.each(classObj,function(index, value){
+                    $.each(characterObj,function(index, value){
                         c = $(div).clone();
                         console.log(value);
-                        $(c).find('h4').text(value[0]);
-                        $(c).find('p').text(value[1]);
-                        $('.jumbotron').append(c);
+                        $(c).find('h4').text(`${value.Name}`);
+                        $(c).find('.age').text(`${value.Age} year old ${value.Race}, Level ${value.Level} ${value.Class}`);
+                        $(c).find('.str').text(value.Str);
+                        $(c).find('.dex').text(value.Dex);
+                        $(c).find('.con').text(value.Con);
+                        $(c).find('.wis').text(value.Wis);
+                        $(c).find('.int').text(value.Int);
+                        $(c).find('.cha').text(value.Cha);
+                        $('.characters').append(c);
                     });
                 },
                 error: function(error){
@@ -70,6 +114,10 @@
         <div class="jumbotron">
             <h1>Welcome Home !!</h1>
  
+        </div>
+        <div class="characters">
+            <h1>Your Characters</h1>
+
         </div>
  
  

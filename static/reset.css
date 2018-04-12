@@ -89,7 +89,6 @@ body {
 }
 
 .btn, p {
-	text-align: center;
 	margin: 50px;
 }
 
@@ -99,7 +98,6 @@ nav {
 }
 
 .footer {
-	position: absolute;
 	left: 20px;
 	bottom: 20px;
 }

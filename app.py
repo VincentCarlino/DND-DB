@@ -185,6 +185,41 @@ def getClasses():
     except Exception as e:
         return render_template('error.html', error = str(e))
 
+@app.route('/getCharacters')
+def getCharacters():
+    try:
+        if session.get('user'):
+            _user = session.get('user')
+
+            con = mysql.connect()
+            cursor = con.cursor()
+            cursor.callproc('getCharacters', (_user,))
+            characters = cursor.fetchall()
+            print(characters, file=sys.stderr)
+
+            characters_json = []
+            for c in characters:
+                character_json = {
+                    'Name': c[1],
+                    'Age': c[2], 
+                    'Str': c[3],
+                    'Dex': c[4],
+                    'Con': c[5],
+                    'Wis': c[6],
+                    'Int': c[7],
+                    'Cha': c[8],
+                    'Race': c[9],
+                    'Class': c[11],
+                    'Level': c[12]
+                }
+                characters_json.append(character_json)
+                
+            return json.dumps(characters_json)
+        else:
+            return render_template('error.html', error = 'Unauthorized Access')
+    except Exception as e:
+        return render_template('error.html', error = str(e))
+
 @app.route('/getRaces')
 def getRaces():
     try:
@@ -227,7 +262,7 @@ def showClasses():
 def userHome():
     
     if session.get('user'):
-        print(session.get('user'), file=sys.stderr)
+        
         return render_template('userHome.html')
     else:
         return render_template('error.html',error = 'Unauthorized Access')
