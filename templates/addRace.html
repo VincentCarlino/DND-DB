@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Python Flask Bucket List App</title>
+ 
+ 
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <link href="../static/reset.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Add Item</a>
+                    </li>
+                    <li role="presentation"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="jumbotron">
+        <section>
+            <form class="form-horizontal" method="post" action="/addRace">
+                <fieldset>
+ 
+                    <!-- Form Name -->
+                    <h2>Create a Race</h2>
+ 
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtTitle">Race Name</label>
+                        <div class="col-md-4">
+                            <input id="txtTitle" name="inputName" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+ 
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtPost">Race Description</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="txtPost" name="inputDescription"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtPost">Race Abilities</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="txtPost" name="inputAbilities"></textarea>
+                        </div>
+                    </div>
+ 
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+                        </div>
+                    </div>
+ 
+                </fieldset>
+            </form>
+ 
+        </section>
+        </div>
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

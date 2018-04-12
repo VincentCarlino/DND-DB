@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `dnd` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `dnd`;
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: dnd
@@ -27,8 +25,8 @@ DROP TABLE IF EXISTS `class`;
 CREATE TABLE `class` (
   `class_name` varchar(50) NOT NULL,
   `class_desc` varchar(8000) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`class_name`),
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`class_name`,`user_id`),
   KEY `fk_user` (`user_id`),
   CONSTRAINT `class_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,7 +38,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES ('Barbarian','A fierce warrior of primitive background who can enter a battle rage',1),('Bard','An inspiring magician whose power echoes the music of creation',1),('Paladin','A holy warrior bound to a sacred oath',1),('Rogue','A scoundrel who uses stealth and trickery to overcome obstacles and enemies',1),('Sorcerer','A spellcaster who draws on inherent magic from a gift or bloodline',1);
+INSERT INTO `class` VALUES ('Barbarian','A fierce warrior of primitive background who can enter a battle rage',1),('Bard','An inspiring magician whose power echoes the music of creation',1),('Bum','a bum',1),('Paladin','A holy warrior bound to a sacred oath',1),('Rogue','A scoundrel who uses stealth and trickery to overcome obstacles and enemies',1),('Sorcerer','A spellcaster who draws on inherent magic from a gift or bloodline',1);
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,8 +53,11 @@ CREATE TABLE `class_level` (
   `class_name` varchar(50) NOT NULL,
   `class_level` int(11) NOT NULL,
   `class_abilities` varchar(8000) DEFAULT NULL,
-  PRIMARY KEY (`class_name`,`class_level`),
-  CONSTRAINT `class_name_fk` FOREIGN KEY (`class_name`) REFERENCES `class` (`class_name`)
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`class_name`,`class_level`,`user_id`),
+  KEY `user_id_fk_idx` (`user_id`),
+  CONSTRAINT `class_name_fk` FOREIGN KEY (`class_name`) REFERENCES `class` (`class_name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -66,7 +67,7 @@ CREATE TABLE `class_level` (
 
 LOCK TABLES `class_level` WRITE;
 /*!40000 ALTER TABLE `class_level` DISABLE KEYS */;
-INSERT INTO `class_level` VALUES ('Barbarian',1,'Rage, Unarmored Defense'),('Barbarian',2,'Reckless Attack, Danger Sense'),('Barbarian',3,'Primal Path'),('Barbarian',4,'Ability Score Improvement'),('Barbarian',5,'Extra Attack, Fast Movement'),('Barbarian',6,'Path feature'),('Barbarian',7,'Feral Instinct'),('Barbarian',8,'Ability Score Improvement'),('Barbarian',9,'Brutal Critical (1 die)'),('Barbarian',10,'Path feature'),('Barbarian',11,'Relentless Rage'),('Barbarian',12,'Ability Score Improvement'),('Barbarian',13,'Brutal Critical (2 dice)'),('Barbarian',14,'Path feature'),('Barbarian',15,'Persistent Rage'),('Barbarian',16,'Ability Score Improvement'),('Barbarian',17,'Brutal Critical (3 dice)'),('Barbarian',18,'Indomitable Might'),('Barbarian',19,'Ability Score Improvement'),('Barbarian',20,'Primal Champion'),('Bard',1,'Spellcasting, Bardic Inspiration (d6)'),('Bard',2,'Jack of All Trades, Song of Rest (d6)'),('Bard',3,'Bard College, Expertise'),('Bard',4,'Ability Score Improvement'),('Bard',5,'Bardic Inspiration (d8), Font of Inspiration'),('Bard',6,'Countercharm, Bard College feature'),('Bard',7,''),('Bard',8,'Ability Score Improvement'),('Bard',9,'Song of Rest (d8)'),('Bard',10,'Bardic Inspiration (d10), Expertise, Magical Secrets'),('Bard',11,''),('Bard',12,'Ability Score Improvement'),('Bard',13,'Song of Rest (d10)'),('Bard',14,'Magical Secrets, Bard College feature'),('Bard',15,'Bardic Inspiration (d12)'),('Bard',16,'Ability Score Improvement'),('Bard',17,'Song of Rest (d12)'),('Bard',18,'Magical Secrets, Bard College feature'),('Bard',19,'Ability Score Improvement'),('Bard',20,'Superior Inspiration'),('Paladin',1,'Divine Sense, Lay on Hands'),('Paladin',2,'Fighting Style, Spellcasting, Divine Smite'),('Paladin',3,'Divine Health, Sacred Oath'),('Paladin',4,'Ability Score Improvement'),('Paladin',5,'Extra Attack'),('Paladin',6,'Aura of Protection'),('Paladin',7,'Sacred Oath feature'),('Paladin',8,'Ability Score Improvement'),('Paladin',9,''),('Paladin',10,'Aura of Courage'),('Paladin',11,'Improved Divine Smite'),('Paladin',12,'Ability Score Improvement'),('Paladin',13,''),('Paladin',14,'Cleansing Touch'),('Paladin',15,'Sacred Oath feature'),('Paladin',16,'Ability Score Improvement'),('Paladin',17,''),('Paladin',18,'Aura improvements'),('Paladin',19,'Ability Score Improvement'),('Paladin',20,'Sacred Oath feature'),('Rogue',1,'Expertise, Sneak Attack, Theives\' Cant'),('Rogue',2,'Cunning Action'),('Rogue',3,'Roguish Archetype'),('Rogue',4,'Ability Score Improvement'),('Rogue',5,'Uncanny Dodge'),('Rogue',6,'Expertise'),('Rogue',7,'Evasion'),('Rogue',8,'Ability Score Improvement'),('Rogue',9,'Roguish Archetype feature'),('Rogue',10,'Ability Score Improvement'),('Rogue',11,'Reliable Talent'),('Rogue',12,'Ability Score Improvement'),('Rogue',13,'Roguish Archetype feature'),('Rogue',14,'Blindsense'),('Rogue',15,'Slippery Mind'),('Rogue',16,'Ability Score Improvement'),('Rogue',17,'Roguish Archetype feature'),('Rogue',18,'Elusive'),('Rogue',19,'Ability Score Improvement'),('Rogue',20,'Stroke of Luck'),('Sorcerer',2,'Font of Magic'),('Sorcerer',3,'Metamagic'),('Sorcerer',4,'Ability Score Improvement'),('Sorcerer',5,''),('Sorcerer',6,'Sorcerous Origin feature'),('Sorcerer',7,''),('Sorcerer',8,'Ability Score Improvement'),('Sorcerer',9,''),('Sorcerer',10,'Metamagic'),('Sorcerer',11,''),('Sorcerer',12,'Ability Score Improvement'),('Sorcerer',13,''),('Sorcerer',14,'Sorcerous Origin feature'),('Sorcerer',15,''),('Sorcerer',16,'Ability Score Improvement'),('Sorcerer',17,'Metamagic'),('Sorcerer',18,'Sorcerous Origin feature'),('Sorcerer',19,'Ability Score Improvement'),('Sorcerer',20,'Sorcerous Restoration');
+INSERT INTO `class_level` VALUES ('Barbarian',1,'Rage, Unarmored Defense',1),('Barbarian',2,'Reckless Attack, Danger Sense',1),('Barbarian',3,'Primal Path',1),('Barbarian',4,'Ability Score Improvement',1),('Barbarian',5,'Extra Attack, Fast Movement',1),('Barbarian',6,'Path feature',1),('Barbarian',7,'Feral Instinct',1),('Barbarian',8,'Ability Score Improvement',1),('Barbarian',9,'Brutal Critical (1 die)',1),('Barbarian',10,'Path feature',1),('Barbarian',11,'Relentless Rage',1),('Barbarian',12,'Ability Score Improvement',1),('Barbarian',13,'Brutal Critical (2 dice)',1),('Barbarian',14,'Path feature',1),('Barbarian',15,'Persistent Rage',1),('Barbarian',16,'Ability Score Improvement',1),('Barbarian',17,'Brutal Critical (3 dice)',1),('Barbarian',18,'Indomitable Might',1),('Barbarian',19,'Ability Score Improvement',1),('Barbarian',20,'Primal Champion',1),('Bard',1,'Spellcasting, Bardic Inspiration (d6)',1),('Bard',2,'Jack of All Trades, Song of Rest (d6)',1),('Bard',3,'Bard College, Expertise',1),('Bard',4,'Ability Score Improvement',1),('Bard',5,'Bardic Inspiration (d8), Font of Inspiration',1),('Bard',6,'Countercharm, Bard College feature',1),('Bard',7,'',1),('Bard',8,'Ability Score Improvement',1),('Bard',9,'Song of Rest (d8)',1),('Bard',10,'Bardic Inspiration (d10), Expertise, Magical Secrets',1),('Bard',11,'',1),('Bard',12,'Ability Score Improvement',1),('Bard',13,'Song of Rest (d10)',1),('Bard',14,'Magical Secrets, Bard College feature',1),('Bard',15,'Bardic Inspiration (d12)',1),('Bard',16,'Ability Score Improvement',1),('Bard',17,'Song of Rest (d12)',1),('Bard',18,'Magical Secrets, Bard College feature',1),('Bard',19,'Ability Score Improvement',1),('Bard',20,'Superior Inspiration',1),('Bum',1,'',1),('Bum',2,'',1),('Bum',3,'',1),('Bum',4,'',1),('Bum',5,'',1),('Bum',6,'',1),('Bum',7,'',1),('Bum',8,'',1),('Bum',9,'',1),('Bum',10,'',1),('Bum',11,'',1),('Bum',12,'',1),('Bum',13,'',1),('Bum',14,'',1),('Bum',15,'',1),('Bum',16,'',1),('Bum',17,'',1),('Bum',18,'',1),('Bum',19,'',1),('Bum',20,'',1),('Paladin',1,'Divine Sense, Lay on Hands',1),('Paladin',2,'Fighting Style, Spellcasting, Divine Smite',1),('Paladin',3,'Divine Health, Sacred Oath',1),('Paladin',4,'Ability Score Improvement',1),('Paladin',5,'Extra Attack',1),('Paladin',6,'Aura of Protection',1),('Paladin',7,'Sacred Oath feature',1),('Paladin',8,'Ability Score Improvement',1),('Paladin',9,'',1),('Paladin',10,'Aura of Courage',1),('Paladin',11,'Improved Divine Smite',1),('Paladin',12,'Ability Score Improvement',1),('Paladin',13,'',1),('Paladin',14,'Cleansing Touch',1),('Paladin',15,'Sacred Oath feature',1),('Paladin',16,'Ability Score Improvement',1),('Paladin',17,'',1),('Paladin',18,'Aura improvements',1),('Paladin',19,'Ability Score Improvement',1),('Paladin',20,'Sacred Oath feature',1),('Rogue',1,'Expertise, Sneak Attack, Theives\' Cant',1),('Rogue',2,'Cunning Action',1),('Rogue',3,'Roguish Archetype',1),('Rogue',4,'Ability Score Improvement',1),('Rogue',5,'Uncanny Dodge',1),('Rogue',6,'Expertise',1),('Rogue',7,'Evasion',1),('Rogue',8,'Ability Score Improvement',1),('Rogue',9,'Roguish Archetype feature',1),('Rogue',10,'Ability Score Improvement',1),('Rogue',11,'Reliable Talent',1),('Rogue',12,'Ability Score Improvement',1),('Rogue',13,'Roguish Archetype feature',1),('Rogue',14,'Blindsense',1),('Rogue',15,'Slippery Mind',1),('Rogue',16,'Ability Score Improvement',1),('Rogue',17,'Roguish Archetype feature',1),('Rogue',18,'Elusive',1),('Rogue',19,'Ability Score Improvement',1),('Rogue',20,'Stroke of Luck',1),('Sorcerer',1,'',1),('Sorcerer',2,'Font of Magic',1),('Sorcerer',3,'Metamagic',1),('Sorcerer',4,'Ability Score Improvement',1),('Sorcerer',5,'',1),('Sorcerer',6,'Sorcerous Origin feature',1),('Sorcerer',7,'',1),('Sorcerer',8,'Ability Score Improvement',1),('Sorcerer',9,'',1),('Sorcerer',10,'Metamagic',1),('Sorcerer',11,'',1),('Sorcerer',12,'Ability Score Improvement',1),('Sorcerer',13,'',1),('Sorcerer',14,'Sorcerous Origin feature',1),('Sorcerer',15,'',1),('Sorcerer',16,'Ability Score Improvement',1),('Sorcerer',17,'Metamagic',1),('Sorcerer',18,'Sorcerous Origin feature',1),('Sorcerer',19,'Ability Score Improvement',1),('Sorcerer',20,'Sorcerous Restoration',1);
 /*!40000 ALTER TABLE `class_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,8 +119,8 @@ CREATE TABLE `race` (
   `race_name` varchar(50) NOT NULL,
   `race_desc` varchar(8000) DEFAULT NULL,
   `race_abilities` varchar(8000) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`race_name`),
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`race_name`,`user_id`),
   KEY `fk_user` (`user_id`),
   CONSTRAINT `race_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -131,7 +132,7 @@ CREATE TABLE `race` (
 
 LOCK TABLES `race` WRITE;
 /*!40000 ALTER TABLE `race` DISABLE KEYS */;
-INSERT INTO `race` VALUES ('Dragonborn','Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. Som e dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.\n','Your Strength score increases by 2, and your Charisma increases by 1.  You have draconic ancestry which grants you a breath weapon based on your color.  Colors include Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White.  You have resistance to the damage type associated with your draconic ancestry.  You can speak, read, and write Common and Draconic.  ',1),('Dwarf','Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. ','Your Constitution score increases by 2. You have superior vision in dark and dim conditions.  You have advantage on saving throws against poison and resistance against poison damage.  You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.  You can speak, read, and write Common and Dwarvish.',1),('Elf','Elves are a magical people of otherworldly grace, living in the world but not entirely part of it. They live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.','Your Dexterity score increases by 2.  You have superior vision in dark and dim conditions.  You have proficiency in the Perception skill.  Magic can\'t put you to sleep.  Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day.  You can speak, read, and write Common and Elvish.',1),('Gnome','A constant hum of busy activity pervades the warrens and neighborhoods where gnomes form their close- knit communities. Louder sounds punctuate the hum: a crunch of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and especially bursts of laughter. Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.','Your Intelligence score increases by 2.  You have superior vision in dark and dim conditions.  You have advantage on all Intelligence, Wisdom, and Charisma saving throws.  You can speak, read, and write Common and Gnomish.  ',1),('Human','In the reckonings of most worlds, humans are the youngest of the common races, late to arrive on the world scene and short-lived in comparison to dwarves, elves, and dragons. Perhaps it is because of their shorter lives that they strive to achieve as much as they can in the years they are given. Or maybe they feel they have something to prove to the elder races, and that’s why they build their mighty empires on the foundation of conquest and trade. Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.','Your ability scores each increase by 1. You can speak, read, and write Common and one extra language of your choice.  ',1),('Tiefling','To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife, tieflings know that this is because a pact struck generations ago infused the essence of Asmodeus—overlord of the Nine Hells—into their bloodline. Their appearance and their nature are not their fault but the result of an ancient sin, for which they and their children and their children’s children will always be held accountable.','Your Intelligence score increases by 1, and your Charisma score increases by 2.  Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You have resistance to fire damage.  You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell once per day as a 2nd-level spell. Once you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells.  You can speak, read, and write Common and Infernal.',1);
+INSERT INTO `race` VALUES ('Dork','Desc','Abils',2),('Dragonborn','Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with fearful incomprehension. Shaped by draconic gods or the dragons themselves, dragonborn originally hatched from dragon eggs as a unique race, combining the best attributes of dragons and humanoids. Som e dragonborn are faithful servants to true dragons, others form the ranks of soldiers in great wars, and still others find themselves adrift, with no clear calling in life.\n','Your Strength score increases by 2, and your Charisma increases by 1.  You have draconic ancestry which grants you a breath weapon based on your color.  Colors include Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White.  You have resistance to the damage type associated with your draconic ancestry.  You can speak, read, and write Common and Draconic.  ',1),('Dragonkin','A half-breed of Dragonborn and Human.  ','Can shapeshift body parts into that of a dragon.  ',26),('Dwarf','Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal. Though they stand well under 5 feet tall, dwarves are so broad and compact that they can weigh as much as a human standing nearly two feet taller. ','Your Constitution score increases by 2. You have superior vision in dark and dim conditions.  You have advantage on saving throws against poison and resistance against poison damage.  You gain proficiency with the artisan’s tools of your choice: smith’s tools, brewer’s supplies, or mason’s tools.  You can speak, read, and write Common and Dwarvish.',1),('Elf','Elves are a magical people of otherworldly grace, living in the world but not entirely part of it. They live in places of ethereal beauty, in the midst of ancient forests or in silvery spires glittering with faerie light, where soft music drifts through the air and gentle fragrances waft on the breeze. Elves love nature and magic, art and artistry, music and poetry, and the good things of the world.','Your Dexterity score increases by 2.  You have superior vision in dark and dim conditions.  You have proficiency in the Perception skill.  Magic can\'t put you to sleep.  Elves don’t need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day.  You can speak, read, and write Common and Elvish.',1),('Gnome','A constant hum of busy activity pervades the warrens and neighborhoods where gnomes form their close- knit communities. Louder sounds punctuate the hum: a crunch of grinding gears here, a minor explosion there, a yelp of surprise or triumph, and especially bursts of laughter. Gnomes take delight in life, enjoying every moment of invention, exploration, investigation, creation, and play.','Your Intelligence score increases by 2.  You have superior vision in dark and dim conditions.  You have advantage on all Intelligence, Wisdom, and Charisma saving throws.  You can speak, read, and write Common and Gnomish.  ',1),('Human','In the reckonings of most worlds, humans are the youngest of the common races, late to arrive on the world scene and short-lived in comparison to dwarves, elves, and dragons. Perhaps it is because of their shorter lives that they strive to achieve as much as they can in the years they are given. Or maybe they feel they have something to prove to the elder races, and that’s why they build their mighty empires on the foundation of conquest and trade. Whatever drives them, humans are the innovators, the achievers, and the pioneers of the worlds.','Your ability scores each increase by 1. You can speak, read, and write Common and one extra language of your choice.  ',1),('Orc','Desc','Abs',2),('Tiefling','To be greeted with stares and whispers, to suffer violence and insult on the street, to see mistrust and fear in every eye: this is the lot of the tiefling. And to twist the knife, tieflings know that this is because a pact struck generations ago infused the essence of Asmodeus—overlord of the Nine Hells—into their bloodline. Their appearance and their nature are not their fault but the result of an ancient sin, for which they and their children and their children’s children will always be held accountable.','Your Intelligence score increases by 1, and your Charisma score increases by 2.  Thanks to your infernal heritage, you have superior vision in dark and dim conditions. You have resistance to fire damage.  You know the thaumaturgy cantrip. Once you reach 3rd level, you can cast the hellish rebuke spell once per day as a 2nd-level spell. Once you reach 5th level, you can also cast the darkness spell once per day. Charisma is your spellcasting ability for these spells.  You can speak, read, and write Common and Infernal.',1);
 /*!40000 ALTER TABLE `race` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +176,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,9 +185,240 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin'),(2,'Vincent','Carlino.v@husky.neu.edu','password'),(3,'RobB0SS','painting4squares@yahoo.com','password'),(16,'a','b','c'),(17,'b','cv','root'),(18,'user','mailmailmail','password'),(19,'userisname','myemail','password'),(20,'thisusername','useremail@gmail.com','password'),(21,'anothersignup','emailforsignup','pASSASDA'),(22,'darklord97','evil@gmail.com','ilovemymmom'),(23,'pugmom68','chuckles@pug.cute','goodboy'),(24,'myman','my@man.net','MAN');
+INSERT INTO `users` VALUES (1,'admin','admin','admin'),(2,'Vincent','Carlino.v@husky.neu.edu','password'),(3,'RobB0SS','painting4squares@yahoo.com','password'),(26,'admin2','admin2@google.com','password'),(27,'fired','fired@gmail.com','password');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'dnd'
+--
+
+--
+-- Dumping routines for database 'dnd'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `addClass` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addClass`(
+	IN p_name VARCHAR(50),
+    IN p_desc VARCHAR(8000),
+    IN p_user_id INT,
+    IN p_1st VARCHAR(8000),
+    IN p_2nd VARCHAR(8000),
+    IN p_3rd VARCHAR(8000),
+    IN p_4th VARCHAR(8000),
+    IN p_5th VARCHAR(8000),
+    IN p_6th VARCHAR(8000),
+    IN p_7th VARCHAR(8000),
+    IN p_8th VARCHAR(8000),
+    IN p_9th VARCHAR(8000),
+    IN p_10th VARCHAR(8000),
+    IN p_11th VARCHAR(8000),
+    IN p_12th VARCHAR(8000),
+    IN p_13th VARCHAR(8000),
+    IN p_14th VARCHAR(8000),
+    IN p_15th VARCHAR(8000),
+    IN p_16th VARCHAR(8000),
+    IN p_17th VARCHAR(8000),
+    IN p_18th VARCHAR(8000),
+    IN p_19th VARCHAR(8000),
+    IN p_20th VARCHAR(8000)
+)
+BEGIN
+	INSERT INTO class
+    (class_name, class_desc, user_id)
+    VALUES
+    (p_name, p_desc, p_user_id);
+    INSERT INTO class_level
+    (class_name, class_level, class_abilities, user_id)
+    VALUES
+    (p_name, 1, p_1st, p_user_id), 
+    (p_name, 2, p_2nd, p_user_id),
+    (p_name, 3, p_3rd, p_user_id),
+    (p_name, 4, p_4th, p_user_id),
+    (p_name, 5, p_5th, p_user_id),
+    (p_name, 6, p_6th, p_user_id),
+    (p_name, 7, p_7th, p_user_id),
+    (p_name, 8, p_8th, p_user_id),
+    (p_name, 9, p_9th, p_user_id),
+    (p_name, 10, p_10th, p_user_id),
+    (p_name, 11, p_11th, p_user_id),
+    (p_name, 12, p_12th, p_user_id),
+    (p_name, 13, p_13th, p_user_id),
+    (p_name, 14, p_14th, p_user_id),
+    (p_name, 15, p_15th, p_user_id),
+    (p_name, 16, p_16th, p_user_id),
+    (p_name, 17, p_17th, p_user_id),
+    (p_name, 18, p_18th, p_user_id),
+    (p_name, 19, p_19th, p_user_id),
+    (p_name, 20, p_20th, p_user_id);
+
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addRace` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addRace`(
+	IN p_name VARCHAR(50),
+    IN p_desc VARCHAR(8000),
+    IN p_abilities VARCHAR(8000),
+    IN p_user_id INT
+)
+BEGIN
+	INSERT INTO race
+    (race_name, race_desc, race_abilities, user_id)
+    VALUES
+    (p_name, p_desc, p_abilities, p_user_id);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `createUser` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`(
+    IN p_username VARCHAR(20),
+    IN p_email VARCHAR(20),
+    IN p_password VARCHAR(20)
+)
+BEGIN
+    if ( select exists (select 1 from users where users.username = p_username) ) THEN
+     
+        select 'Username Exists !!';
+     
+    ELSE
+     
+        insert into users
+        (
+            username,
+            email,
+            password
+        )
+        values
+        (
+            p_username,
+            p_email,
+            p_password
+        );
+     
+    END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getCharacters` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getCharacters`(
+	IN p_user_id INT
+)
+BEGIN
+	SELECT * FROM player_character WHERE user_id = p_user_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getClasses` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getClasses`(
+	IN p_user_id INT
+)
+BEGIN
+	SELECT * FROM class WHERE user_id = p_user_id OR user_id = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getRaces` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getRaces`(
+	IN p_user_id INT
+)
+BEGIN
+	SELECT * FROM race WHERE user_id = p_user_id OR user_id = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `validateLogin` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `validateLogin`(
+    IN p_username VARCHAR(20)
+)
+BEGIN
+    SELECT * FROM users WHERE username = p_username;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -197,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-09 13:43:58
+-- Dump completed on 2018-04-11 23:25:38

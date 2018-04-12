@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Python Flask Bucket List App</title>
+ 
+ 
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <link href="../static/reset.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Add Item</a>
+                    </li>
+                    <li role="presentation"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="jumbotron">
+        <section>
+            <form class="form-horizontal" method="post" action="/addClass">
+                <fieldset>
+ 
+                    <!-- Form Name -->
+                    <h2>Create a Class</h2>
+ 
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtTitle">Class Name</label>
+                        <div class="col-md-4">
+                            <input id="txtTitle" name="inputName" type="text" class="form-control input-md">
+                        </div>
+                    </div>
+ 
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtPost">Class Description</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="txtPost" name="inputDescription"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtPost">Class Abilities by Level</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="txtPost" placeholder="1" name="input1st"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="2" name="input2nd"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="3" name="input3rd"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="4" name="input4th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="5" name="input5th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="6" name="input6th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="7" name="input7th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="8" name="input8th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="9" name="input9th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="10" name="input10th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="11" name="input11th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="12" name="input12th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="13" name="input13th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="14" name="input14th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="15" name="input15th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="16" name="input16th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="17" name="input17th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="18" name="input18th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="19" name="input19th"></textarea>
+                            <textarea class="form-control" id="txtPost" placeholder="20" name="input20th"></textarea>
+                        </div>
+                    </div>
+ 
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <input id="singlebutton" name="singlebutton" class="btn btn-primary" type="submit" value="Publish" />
+                        </div>
+                    </div>
+ 
+                </fieldset>
+            </form>
+ 
+        </section>
+    </div>
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

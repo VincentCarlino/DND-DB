@@ -6,12 +6,10 @@
  
  
     <script src="../static/js/jquery-3.3.1.min.js"></script>
-    
-    <link href="../userhome.css" rel="stylesheet">
     <script>
         $(function(){
             $.ajax({
-                url : '/getCharacters',
+                url : '/getClasses',
                 type : 'GET',
                 success: function(res){
                     var div = $('<div>')
@@ -54,9 +52,9 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="/showCreate">Create</a>
+                    <li role="presentation" class="active"><a href="/">Home</a>
                     </li>
-                    <li role="presentation" class="active"><a href="/showClasses">Classes</a>
+                    <li role="presentation" class="active"><a href="/showCreate">Create</a>
                     </li>
                     <li role="presentation" class="active"><a href="/showRaces">Races</a>
                     </li>
@@ -68,7 +66,7 @@
         </div>
  
         <div class="jumbotron">
-            <h1>Welcome Home !!</h1>
+            <h1>Your Classes</h1>
  
         </div>
  

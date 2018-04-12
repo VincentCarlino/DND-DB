@@ -6,12 +6,10 @@
  
  
     <script src="../static/js/jquery-3.3.1.min.js"></script>
-    
-    <link href="../userhome.css" rel="stylesheet">
     <script>
         $(function(){
             $.ajax({
-                url : '/getCharacters',
+                url : '/getRaces',
                 type : 'GET',
                 success: function(res){
                     var div = $('<div>')
@@ -25,16 +23,17 @@
                                     
                     
                     console.log(res);
-                    var classObj = JSON.parse(res);
-                    console.log(classObj);
-                    var c = '';
+                    var raceObj = JSON.parse(res);
+                    console.log(raceObj);
+                    var r = '';
                     
-                    $.each(classObj,function(index, value){
-                        c = $(div).clone();
+                    $.each(raceObj,function(index, value){
+                        r = $(div).clone();
                         console.log(value);
-                        $(c).find('h4').text(value[0]);
-                        $(c).find('p').text(value[1]);
-                        $('.jumbotron').append(c);
+                        $(r).find('h4').text(value[0]);
+                        $(r).find('p').text(value[1]);
+                        $(r).css("margin-bottom", "20px")
+                        $('.jumbotron').append(r);
                     });
                 },
                 error: function(error){
@@ -54,11 +53,11 @@
         <div class="header">
             <nav>
                 <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="/">Home</a>
+                    </li>
                     <li role="presentation" class="active"><a href="/showCreate">Create</a>
                     </li>
                     <li role="presentation" class="active"><a href="/showClasses">Classes</a>
-                    </li>
-                    <li role="presentation" class="active"><a href="/showRaces">Races</a>
                     </li>
                     <li role="presentation" class="active"><a href="/logout">Logout</a>
                     </li>
@@ -68,7 +67,7 @@
         </div>
  
         <div class="jumbotron">
-            <h1>Welcome Home !!</h1>
+            <h1>Your Races</h1>
  
         </div>
  

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Python Flask Bucket List App</title>
+ 
+ 
+
+    <script src="../static/js/jquery-3.3.1.min.js"></script>
+    <link href="../static/reset.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Add Item</a>
+                    </li>
+                    <li role="presentation"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="jumbotron">
+        <section>
+            <form class="form-horizontal" method="post" action="/addWish">
+                <fieldset>
+ 
+                    <!-- Form Name -->
+                    <h2>Create an Entry</h2>
+ 
+                    <!-- Button -->
+                    <a href="/showAddRace">Race</a>
+                    <!-- Button -->
+                    <a href="/showAddClass">Class</a>
+ 
+                </fieldset>
+            </form>
+ 
+        </section>
+        </div>
+        <footer class="footer">
+            <p>&copy; Company 2015</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>
