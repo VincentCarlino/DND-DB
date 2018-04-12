@@ -66,6 +66,26 @@ def showAddClass():
     else:
         return render_template('signin.html')
 
+@app.route('/showAddCharacter')
+def showAddCharacter():
+    if session.get('user'):
+        _user = session.get('user')
+
+        con = mysql.connect()
+        cursor = con.cursor()
+        cursor.callproc('getClasses',(_user,))
+        classes = cursor.fetchall()
+
+        classes_arr = []
+        for c in classes:
+            classes_arr.append(c[0])
+
+        print(classes_arr, file=sys.stderr)
+        return render_template('addCharacter.html', classes=classes_arr)
+    else:
+        return render_template('signin.html')
+
+
 @app.route('/addRace',methods=['POST'])
 def addRace():
     try:

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>DNDDB</title>
+ 
+ 
+    <link href="../static/reset.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="showSignin">Sign In</a>
+                    </li>
+                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+ 
+        <div class="jumbotron">
+            <h1>Dungeons and Dragons Tracker App</h1>
+            <p class="lead"></p>
+            <select name="class" method="GET" action="/">
+                <option value="{{classes[0]}}" selected>{{classes[0]}}</option>
+                {% for class in classes[1:] %}
+                  <option value="{{class}}">{{class}}</option>
+                {% endfor %}
+              </select>
+            <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a>
+            </p>
+        </div>
+
+ 
+        <footer class="footer">
+            <p>&copy; Vincent Carlino 2018</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

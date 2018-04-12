@@ -18,7 +18,9 @@ time, mark, audio, video {
 	color: white;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 100%;
+	text-decoration: none;
 	vertical-align: baseline;
+	transition: background-color 0.2s ease;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -30,6 +32,7 @@ body {
 }
 ol, ul {
 	list-style: none;
+	display: flex;
 }
 blockquote, q {
 	quotes: none;
@@ -65,10 +68,38 @@ h2 {
 	font-size: 48px;
 }
 
-li {
+li, .btn {
 	padding: 10px 20px;
+	border: solid white;
+    border-radius: 20px;
+	margin: 10px;
+}
+
+.btn:hover, li:hover {
+	background-color: white;
+	color: #4285F4;
+}
+
+a {
+	color: inherit;
 }
 
 body {
 	background: #4285F4;
+}
+
+.btn, p {
+	text-align: center;
+	margin: 50px;
+}
+
+nav {
+	margin: 40px 0;
+	text-align: center;
+}
+
+.footer {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
 }
