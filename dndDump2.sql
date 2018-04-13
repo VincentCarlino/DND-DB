@@ -99,7 +99,7 @@ CREATE TABLE `player_character` (
   CONSTRAINT `characater_class_fk` FOREIGN KEY (`class_name`) REFERENCES `class` (`class_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `character_race_fk` FOREIGN KEY (`character_race`) REFERENCES `race` (`race_name`),
   CONSTRAINT `player_character_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `player_character` (
 
 LOCK TABLES `player_character` WRITE;
 /*!40000 ALTER TABLE `player_character` DISABLE KEYS */;
-INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',1),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',1),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',1),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1);
+INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',8),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',1),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',1),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1),(5,'Ya Boi',69,10,10,10,10,10,10,'Human',1,'Rogue',3);
 /*!40000 ALTER TABLE `player_character` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,6 +173,41 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'dnd'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `addCharacter` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addCharacter`(
+	IN p_character_name VARCHAR(50),
+    IN p_character_age INT,
+    IN p_str INT,
+    IN p_dex INT,
+    IN p_con INT,
+    IN p_wis INT,
+    IN p_int INT,
+    IN p_cha INT,
+    IN p_race VARCHAR(50),
+    IN p_user_id INT,
+    IN p_class VARCHAR(50),
+    IN p_level INT
+)
+BEGIN
+	INSERT INTO player_character
+    (character_name, character_age, strength, dexterity, constitution, wisdom, intelligence, charisma, character_race, user_id, class_name, character_level)
+    VALUES
+    (p_character_name, p_character_age, p_str, p_dex, p_con, p_wis, p_int, p_cha, p_race, p_user_id, p_class, p_level);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `addClass` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -312,6 +347,28 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteCharacter` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteCharacter`(
+	IN p_char_id INT
+)
+BEGIN
+	DELETE FROM player_character
+    WHERE character_id = p_char_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getCharacters` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -327,6 +384,34 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getCharacters`(
 )
 BEGIN
 	SELECT * FROM player_character WHERE user_id = p_user_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getClassAbilities` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getClassAbilities`(
+    IN p_user_id INT,
+    IN p_class_name VARCHAR(50),
+    IN p_level INT
+)
+BEGIN
+    if ( select exists (select 1 from class_level where user_id = p_user_id AND class_name = p_class_name)) THEN
+     
+        select class_abilities FROM class_level WHERE user_id = p_user_id AND class_name = p_class_name AND class_level = p_level;
+    ELSE
+		SELECT class_abilities FROM class_level WHERE user_id = 1 AND class_name = p_class_name AND class_level = p_level;
+    END IF;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -354,6 +439,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getRaceAbilities` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getRaceAbilities`(
+    IN p_user_id INT,
+    IN p_race_name VARCHAR(50)
+)
+BEGIN
+    IF (SELECT EXISTS (SELECT 1 FROM race WHERE user_id = p_user_id AND race_name = p_race_name)) THEN
+		SELECT race_abilities FROM race WHERE user_id = p_user_id AND race_name = p_race_name;
+	ELSE
+		SELECT race_abilities FROM race WHERE user_id = 1 AND race_name = p_race_name;
+	END IF;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getRaces` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -369,6 +480,52 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getRaces`(
 )
 BEGIN
 	SELECT * FROM race WHERE user_id = p_user_id OR user_id = 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `levelDown` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `levelDown`(
+	IN p_char_id INT
+)
+BEGIN
+	UPDATE player_character
+    SET character_level = (character_level - 1)
+    WHERE character_id = p_char_id AND character_level > 1;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `levelUp` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `levelUp`(
+	IN p_char_id INT
+)
+BEGIN
+	UPDATE player_character
+    SET character_level = (character_level + 1)
+    WHERE character_id = p_char_id AND character_level < 20;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -406,4 +563,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-12 13:10:41
+-- Dump completed on 2018-04-13  1:20:17

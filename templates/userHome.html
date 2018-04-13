@@ -17,7 +17,8 @@
         .attr('class', 'list-group')
         .append($('<div>')
             .attr('class', 'list-group-item character')
-            .append($('<h4>')
+            .append($('<a>').attr('class', 'delete').text('x'),
+                $('<h4>')
                 .attr('class', 'name list-group-item-heading'),
                 $('<p>')
                 .attr('class', 'list-group-item-text age'),
@@ -84,6 +85,7 @@
                         $(c).find('.class-level').text(`Class Abilities at level ${value.Level}`)
                         $(c).find('.class-attr').text(value.Class_abilities);
                         $(c).find('.race-attr').text(value.Race_abilities);
+                        $(c).find('.delete').attr('data-id', value.Id);
                         $('.characters').append(c);
                     });
                 },
@@ -92,6 +94,8 @@
                 }
             });
         });
+
+        //Make deleting, levelup, and leveldown work (jquery? python?)
         </script>
         <link href="../static/reset.css" rel="stylesheet">
         <link href="../static/userhome.css" rel="stylesheet">
@@ -118,10 +122,6 @@
             </nav>
         </div>
  
-        <div class="jumbotron">
-            <h1>Welcome Home !!</h1>
- 
-        </div>
         <div class="characters">
             <h1>Your Characters</h1>
 

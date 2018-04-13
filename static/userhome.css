@@ -28,6 +28,15 @@
     box-shadow: 3px 9px 25px -7px rgba(0,0,0,0.37);
 }
 
+.delete {
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 0;
+    top: 5px;
+    right: 5px;
+}
+
 .character > * {
     color: rgb(33, 37, 41);
     padding: 10px;

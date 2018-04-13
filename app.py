@@ -86,6 +86,29 @@ def showAddCharacter():
         return render_template('signin.html')
 
 
+@app.route('/levelUp', methods=['POST'])
+def levelUp():
+    try:
+        if session.get('user'):
+
+            _character_id = request.form['id']
+  
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('levelUp',(_character_id,))
+            data = cursor.fetchall()
+ 
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'status':'OK'})
+            else:
+                return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+        conn.close()
+
 @app.route('/addRace',methods=['POST'])
 def addRace():
     try:
@@ -206,6 +229,7 @@ def getCharacters():
                 c_abilities = cursor2.fetchall()
                 r_abilities = cursor3.fetchall()
                 character_json = {
+                    'Id': c[0],
                     'Name': c[1],
                     'Age': c[2], 
                     'Str': c[3],
