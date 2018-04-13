@@ -69,10 +69,9 @@ h2 {
 }
 
 li, .btn {
-	padding: 10px 20px;
-	border: solid white;
-    border-radius: 20px;
-	margin: 10px;
+	padding: 20px;
+	border-right: solid #d1d1d1;
+	color: #4285F4;
 }
 
 .btn:hover, li:hover {
@@ -88,13 +87,14 @@ body {
 	background: #4285F4;
 }
 
-.btn, p {
+.btn {
 	margin: 50px;
 }
 
 nav {
-	margin: 40px 0;
+	margin-bottom: 40px;
 	text-align: center;
+	background-color: #f7f7f7;
 }
 
 .footer {

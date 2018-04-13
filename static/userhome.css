@@ -2,6 +2,32 @@
     display: flex;
 }
 
-.stat {
+.stat{
     text-align: center;
+    padding: 20px 10px;
+    flex: 1;
+}
+
+.stat > * {
+    color: rgb(33, 37, 41);
+}
+
+.list-group {
+    padding: 30px;
+}
+
+.characters {
+    width: 800px;
+    margin: 0 auto;
+}
+
+.character {
+    background: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 3px 9px 25px -7px rgba(0,0,0,0.37);
+}
+
+.character > * {
+    color: rgb(33, 37, 41);
+    padding: 20px 10px;
 }
