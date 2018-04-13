@@ -85,7 +85,7 @@
                         $(c).find('.class-level').text(`Class Abilities at level ${value.Level}`)
                         $(c).find('.class-attr').text(value.Class_abilities);
                         $(c).find('.race-attr').text(value.Race_abilities);
-                        $(c).find('.delete').attr('data-id', value.Id);
+                        $(c).find('.delete').attr('data-id', value.Id).attr('onClick', levelUp(this));
                         $('.characters').append(c);
                     });
                 },
@@ -94,6 +94,20 @@
                 }
             });
         });
+
+        function levelUp(elm){
+            $.ajax({
+                url : '/levelUp',
+                data : {id: $(elm).attr('data-id')},
+                type : 'POST',
+                success: function(res){
+                    console.log(res);
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
 
         //Make deleting, levelup, and leveldown work (jquery? python?)
         </script>
