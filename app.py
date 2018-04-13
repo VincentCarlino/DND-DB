@@ -199,6 +199,12 @@ def getCharacters():
 
             characters_json = []
             for c in characters:
+                cursor2 = con.cursor()
+                cursor3 = con.cursor()
+                cursor2.callproc('getClassAbilities', (_user, c[11], c[12]))
+                cursor3.callproc('getRaceAbilities', (_user, c[9]))
+                c_abilities = cursor2.fetchall()
+                r_abilities = cursor3.fetchall()
                 character_json = {
                     'Name': c[1],
                     'Age': c[2], 
@@ -210,7 +216,9 @@ def getCharacters():
                     'Cha': c[8],
                     'Race': c[9],
                     'Class': c[11],
-                    'Level': c[12]
+                    'Level': c[12],
+                    'Class_abilities': c_abilities[0][0],
+                    'Race_abilities': r_abilities[0][0],
                 }
                 characters_json.append(character_json)
                 

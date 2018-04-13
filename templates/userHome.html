@@ -18,7 +18,7 @@
         .append($('<div>')
             .attr('class', 'list-group-item character')
             .append($('<h4>')
-                .attr('class', 'list-group-item-heading'),
+                .attr('class', 'name list-group-item-heading'),
                 $('<p>')
                 .attr('class', 'list-group-item-text age'),
                 $('<div>')
@@ -58,7 +58,11 @@
                     .append($('<p>')
                         .attr('class', 'list-group-item-text cha'),
                         $('<p>')
-                        .text('Charisma')))));
+                        .text('Charisma'))),
+                $('<h4>').attr('class', 'class-level'),
+                $('<p>').attr('class', 'class-attr'),
+                $('<h4>').text('Race Advantages'),
+                $('<p>').attr('class', 'race-attr').text('Class abilities')));
                                     
                     
                     console.log(res);
@@ -69,7 +73,7 @@
                     $.each(characterObj,function(index, value){
                         c = $(div).clone();
                         console.log(value);
-                        $(c).find('h4').text(`${value.Name}`);
+                        $(c).find('.name').text(`${value.Name}`);
                         $(c).find('.age').text(`${value.Age} year old ${value.Race}, Level ${value.Level} ${value.Class}`);
                         $(c).find('.str').text(value.Str);
                         $(c).find('.dex').text(value.Dex);
@@ -77,6 +81,9 @@
                         $(c).find('.wis').text(value.Wis);
                         $(c).find('.int').text(value.Int);
                         $(c).find('.cha').text(value.Cha);
+                        $(c).find('.class-level').text(`Class Abilities at level ${value.Level}`)
+                        $(c).find('.class-attr').text(value.Class_abilities);
+                        $(c).find('.race-attr').text(value.Race_abilities);
                         $('.characters').append(c);
                     });
                 },
