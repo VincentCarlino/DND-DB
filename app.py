@@ -73,18 +73,61 @@ def showAddCharacter():
 
         con = mysql.connect()
         cursor = con.cursor()
+        cursor2 = con.cursor()
         cursor.callproc('getClasses',(_user,))
+        cursor2.callproc('getRaces', (_user,))
         classes = cursor.fetchall()
+        races = cursor2.fetchall()
 
         classes_arr = []
+        races_arr = []
         for c in classes:
             classes_arr.append(c[0])
 
+        for r in races:
+            races_arr.append(r[0])
+
         print(classes_arr, file=sys.stderr)
-        return render_template('addCharacter.html', classes=classes_arr)
+        print(races_arr, file=sys.stderr)
+        return render_template('addCharacter.html', classes=classes_arr, races=races_arr)
     else:
         return render_template('signin.html')
 
+@app.route('/addCharacter',methods=['POST'])
+def addCharacter():
+    try:
+        if session.get('user'):
+            _name = request.form['inputName']
+            _age = request.form['inputAge']
+            _str = request.form['inputStr']
+            _dex = request.form['inputDex']
+            _con = request.form['inputCon']
+            _wis = request.form['inputWis']
+            _int = request.form['inputInt']
+            _cha = request.form['inputCha']
+            _race = request.form['inputRace']
+            _class = request.form['inputClass']
+            _level = request.form['inputLevel']
+            _user = session.get('user')
+ 
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('addCharacter',(_name,_age,_str,_dex,_con,_wis,_int,_cha,_race,_user,_class,_level))
+            data = cursor.fetchall()
+ 
+            if len(data) is 0:
+                conn.commit()
+                return redirect('/userHome')
+            else:
+                return render_template('error.html',error = 'An error occurred!')
+ 
+        else:
+            return render_template('error.html',error = 'Unauthorized Access')
+    except Exception as e:
+        return render_template('error.html',error = str(e))
+    finally:
+        cursor.close()
+        conn.close()
 
 @app.route('/levelUp', methods=['POST'])
 def levelUp():
@@ -93,9 +136,61 @@ def levelUp():
 
             _character_id = request.form['id']
   
+            print(_character_id, file=sys.stderr)
+
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.callproc('levelUp',(_character_id,))
+            data = cursor.fetchall()
+ 
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'status':'OK'})
+            else:
+                return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/levelDown', methods=['POST'])
+def levelDown():
+    try:
+        if session.get('user'):
+
+            _character_id = request.form['id']
+  
+            print(_character_id, file=sys.stderr)
+            
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('levelDown',(_character_id,))
+            data = cursor.fetchall()
+ 
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'status':'OK'})
+            else:
+                return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/deleteCharacter', methods=['POST'])
+def deleteCharacter():
+    try:
+        if session.get('user'):
+
+            _character_id = request.form['id']
+  
+            print(_character_id, file=sys.stderr)
+            
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('deleteCharacter',(_character_id,))
             data = cursor.fetchall()
  
             if len(data) is 0:

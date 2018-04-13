@@ -29,17 +29,35 @@
         <div class="jumbotron">
             <h1>Dungeons and Dragons Tracker App</h1>
             <textarea class="form-control" id="txtPost" placeholder="Name" name="inputName"></textarea>
-            <textarea class="form-control" id="txtPost" placeholder="Age" name="inputAge"></textarea>
-            <textarea class="form-control" id="txtPost" placeholder="1" name="input1st"></textarea>
+            <textarea class="form-control" id="txtPost" placeholder="Age" name="inputAge" type="number"></textarea>
+            <div class="stats">
+                <textarea class="form-control" id="txtPost" placeholder="Strength" name="inputStr" type="number"></textarea>
+                <textarea class="form-control" id="txtPost" placeholder="Dexterity" name="inputDex" type="number"></textarea>
+                <textarea class="form-control" id="txtPost" placeholder="Constitution" name="inputCon" type="number"></textarea>
+                <textarea class="form-control" id="txtPost" placeholder="Wisdom" name="inputWis" type="number"></textarea>
+                <textarea class="form-control" id="txtPost" placeholder="Intelligence" name="inputInt" type="number"></textarea>
+                <textarea class="form-control" id="txtPost" placeholder="Charisma" name="inputCha" type="number"></textarea>
+            </div>
+
             <p class="lead"></p>
-            <select name="class" method="GET" action="/">
+            <select name="inputClass" method="GET" action="/">
                 <option value="{{classes[0]}}" selected>{{classes[0]}}</option>
                 {% for class in classes[1:] %}
                   <option value="{{class}}">{{class}}</option>
                 {% endfor %}
               </select>
-            <p><a class="btn btn-lg btn-success" href="showSignUp" role="button">Sign up today</a>
-            </p>
+            <select name="inputLevel">
+                <option value="1" selected>1</option>
+                {% for x in range(2, 21) %}
+                    <option value="{{x}}">{{x}}</option>
+                {% endfor %}
+            </select>
+              <select name="inputRace" method="GET" action="/">
+                <option value="{{races[0]}}" selected>{{races[0]}}</option>
+                {% for race in races[1:] %}
+                  <option value="{{race}}">{{race}}</option>
+                {% endfor %}
+              </select>
         </div>
 
  

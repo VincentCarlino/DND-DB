@@ -38,7 +38,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES ('','',1),('Barbarian','A fierce warrior of primitive background who can enter a battle rage',1),('Bard','An inspiring magician whose power echoes the music of creation',1),('Paladin','A holy warrior bound to a sacred oath',1),('Rogue','A scoundrel who uses stealth and trickery to overcome obstacles and enemies',1),('Sorcerer','A spellcaster who draws on inherent magic from a gift or bloodline',1);
+INSERT INTO `class` VALUES ('Barbarian','A fierce warrior of primitive background who can enter a battle rage',1),('Bard','An inspiring magician whose power echoes the music of creation',1),('Paladin','A holy warrior bound to a sacred oath',1),('Rogue','A scoundrel who uses stealth and trickery to overcome obstacles and enemies',1),('Sorcerer','A spellcaster who draws on inherent magic from a gift or bloodline',1);
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +67,7 @@ CREATE TABLE `class_level` (
 
 LOCK TABLES `class_level` WRITE;
 /*!40000 ALTER TABLE `class_level` DISABLE KEYS */;
-INSERT INTO `class_level` VALUES ('',1,'',1),('',2,'',1),('',3,'',1),('',4,'',1),('',5,'',1),('',6,'',1),('',7,'',1),('',8,'',1),('',9,'',1),('',10,'',1),('',11,'',1),('',12,'',1),('',13,'',1),('',14,'',1),('',15,'',1),('',16,'',1),('',17,'',1),('',18,'',1),('',19,'',1),('',20,'',1),('Barbarian',1,'Rage, Unarmored Defense',1),('Barbarian',2,'Reckless Attack, Danger Sense',1),('Barbarian',3,'Primal Path',1),('Barbarian',4,'Ability Score Improvement',1),('Barbarian',5,'Extra Attack, Fast Movement',1),('Barbarian',6,'Path feature',1),('Barbarian',7,'Feral Instinct',1),('Barbarian',8,'Ability Score Improvement',1),('Barbarian',9,'Brutal Critical (1 die)',1),('Barbarian',10,'Path feature',1),('Barbarian',11,'Relentless Rage',1),('Barbarian',12,'Ability Score Improvement',1),('Barbarian',13,'Brutal Critical (2 dice)',1),('Barbarian',14,'Path feature',1),('Barbarian',15,'Persistent Rage',1),('Barbarian',16,'Ability Score Improvement',1),('Barbarian',17,'Brutal Critical (3 dice)',1),('Barbarian',18,'Indomitable Might',1),('Barbarian',19,'Ability Score Improvement',1),('Barbarian',20,'Primal Champion',1),('Bard',1,'Spellcasting, Bardic Inspiration (d6)',1),('Bard',2,'Jack of All Trades, Song of Rest (d6)',1),('Bard',3,'Bard College, Expertise',1),('Bard',4,'Ability Score Improvement',1),('Bard',5,'Bardic Inspiration (d8), Font of Inspiration',1),('Bard',6,'Countercharm, Bard College feature',1),('Bard',7,'',1),('Bard',8,'Ability Score Improvement',1),('Bard',9,'Song of Rest (d8)',1),('Bard',10,'Bardic Inspiration (d10), Expertise, Magical Secrets',1),('Bard',11,'',1),('Bard',12,'Ability Score Improvement',1),('Bard',13,'Song of Rest (d10)',1),('Bard',14,'Magical Secrets, Bard College feature',1),('Bard',15,'Bardic Inspiration (d12)',1),('Bard',16,'Ability Score Improvement',1),('Bard',17,'Song of Rest (d12)',1),('Bard',18,'Magical Secrets, Bard College feature',1),('Bard',19,'Ability Score Improvement',1),('Bard',20,'Superior Inspiration',1),('Paladin',1,'Divine Sense, Lay on Hands',1),('Paladin',2,'Fighting Style, Spellcasting, Divine Smite',1),('Paladin',3,'Divine Health, Sacred Oath',1),('Paladin',4,'Ability Score Improvement',1),('Paladin',5,'Extra Attack',1),('Paladin',6,'Aura of Protection',1),('Paladin',7,'Sacred Oath feature',1),('Paladin',8,'Ability Score Improvement',1),('Paladin',9,'',1),('Paladin',10,'Aura of Courage',1),('Paladin',11,'Improved Divine Smite',1),('Paladin',12,'Ability Score Improvement',1),('Paladin',13,'',1),('Paladin',14,'Cleansing Touch',1),('Paladin',15,'Sacred Oath feature',1),('Paladin',16,'Ability Score Improvement',1),('Paladin',17,'',1),('Paladin',18,'Aura improvements',1),('Paladin',19,'Ability Score Improvement',1),('Paladin',20,'Sacred Oath feature',1),('Rogue',1,'Expertise, Sneak Attack, Theives\' Cant',1),('Rogue',2,'Cunning Action',1),('Rogue',3,'Roguish Archetype',1),('Rogue',4,'Ability Score Improvement',1),('Rogue',5,'Uncanny Dodge',1),('Rogue',6,'Expertise',1),('Rogue',7,'Evasion',1),('Rogue',8,'Ability Score Improvement',1),('Rogue',9,'Roguish Archetype feature',1),('Rogue',10,'Ability Score Improvement',1),('Rogue',11,'Reliable Talent',1),('Rogue',12,'Ability Score Improvement',1),('Rogue',13,'Roguish Archetype feature',1),('Rogue',14,'Blindsense',1),('Rogue',15,'Slippery Mind',1),('Rogue',16,'Ability Score Improvement',1),('Rogue',17,'Roguish Archetype feature',1),('Rogue',18,'Elusive',1),('Rogue',19,'Ability Score Improvement',1),('Rogue',20,'Stroke of Luck',1),('Sorcerer',1,'',1),('Sorcerer',2,'Font of Magic',1),('Sorcerer',3,'Metamagic',1),('Sorcerer',4,'Ability Score Improvement',1),('Sorcerer',5,'',1),('Sorcerer',6,'Sorcerous Origin feature',1),('Sorcerer',7,'',1),('Sorcerer',8,'Ability Score Improvement',1),('Sorcerer',9,'',1),('Sorcerer',10,'Metamagic',1),('Sorcerer',11,'',1),('Sorcerer',12,'Ability Score Improvement',1),('Sorcerer',13,'',1),('Sorcerer',14,'Sorcerous Origin feature',1),('Sorcerer',15,'',1),('Sorcerer',16,'Ability Score Improvement',1),('Sorcerer',17,'Metamagic',1),('Sorcerer',18,'Sorcerous Origin feature',1),('Sorcerer',19,'Ability Score Improvement',1),('Sorcerer',20,'Sorcerous Restoration',1);
+INSERT INTO `class_level` VALUES ('Barbarian',1,'Rage, Unarmored Defense',1),('Barbarian',2,'Reckless Attack, Danger Sense',1),('Barbarian',3,'Primal Path',1),('Barbarian',4,'Ability Score Improvement',1),('Barbarian',5,'Extra Attack, Fast Movement',1),('Barbarian',6,'Path feature',1),('Barbarian',7,'Feral Instinct',1),('Barbarian',8,'Ability Score Improvement',1),('Barbarian',9,'Brutal Critical (1 die)',1),('Barbarian',10,'Path feature',1),('Barbarian',11,'Relentless Rage',1),('Barbarian',12,'Ability Score Improvement',1),('Barbarian',13,'Brutal Critical (2 dice)',1),('Barbarian',14,'Path feature',1),('Barbarian',15,'Persistent Rage',1),('Barbarian',16,'Ability Score Improvement',1),('Barbarian',17,'Brutal Critical (3 dice)',1),('Barbarian',18,'Indomitable Might',1),('Barbarian',19,'Ability Score Improvement',1),('Barbarian',20,'Primal Champion',1),('Bard',1,'Spellcasting, Bardic Inspiration (d6)',1),('Bard',2,'Jack of All Trades, Song of Rest (d6)',1),('Bard',3,'Bard College, Expertise',1),('Bard',4,'Ability Score Improvement',1),('Bard',5,'Bardic Inspiration (d8), Font of Inspiration',1),('Bard',6,'Countercharm, Bard College feature',1),('Bard',7,'',1),('Bard',8,'Ability Score Improvement',1),('Bard',9,'Song of Rest (d8)',1),('Bard',10,'Bardic Inspiration (d10), Expertise, Magical Secrets',1),('Bard',11,'',1),('Bard',12,'Ability Score Improvement',1),('Bard',13,'Song of Rest (d10)',1),('Bard',14,'Magical Secrets, Bard College feature',1),('Bard',15,'Bardic Inspiration (d12)',1),('Bard',16,'Ability Score Improvement',1),('Bard',17,'Song of Rest (d12)',1),('Bard',18,'Magical Secrets, Bard College feature',1),('Bard',19,'Ability Score Improvement',1),('Bard',20,'Superior Inspiration',1),('Paladin',1,'Divine Sense, Lay on Hands',1),('Paladin',2,'Fighting Style, Spellcasting, Divine Smite',1),('Paladin',3,'Divine Health, Sacred Oath',1),('Paladin',4,'Ability Score Improvement',1),('Paladin',5,'Extra Attack',1),('Paladin',6,'Aura of Protection',1),('Paladin',7,'Sacred Oath feature',1),('Paladin',8,'Ability Score Improvement',1),('Paladin',9,'',1),('Paladin',10,'Aura of Courage',1),('Paladin',11,'Improved Divine Smite',1),('Paladin',12,'Ability Score Improvement',1),('Paladin',13,'',1),('Paladin',14,'Cleansing Touch',1),('Paladin',15,'Sacred Oath feature',1),('Paladin',16,'Ability Score Improvement',1),('Paladin',17,'',1),('Paladin',18,'Aura improvements',1),('Paladin',19,'Ability Score Improvement',1),('Paladin',20,'Sacred Oath feature',1),('Rogue',1,'Expertise, Sneak Attack, Theives\' Cant',1),('Rogue',2,'Cunning Action',1),('Rogue',3,'Roguish Archetype',1),('Rogue',4,'Ability Score Improvement',1),('Rogue',5,'Uncanny Dodge',1),('Rogue',6,'Expertise',1),('Rogue',7,'Evasion',1),('Rogue',8,'Ability Score Improvement',1),('Rogue',9,'Roguish Archetype feature',1),('Rogue',10,'Ability Score Improvement',1),('Rogue',11,'Reliable Talent',1),('Rogue',12,'Ability Score Improvement',1),('Rogue',13,'Roguish Archetype feature',1),('Rogue',14,'Blindsense',1),('Rogue',15,'Slippery Mind',1),('Rogue',16,'Ability Score Improvement',1),('Rogue',17,'Roguish Archetype feature',1),('Rogue',18,'Elusive',1),('Rogue',19,'Ability Score Improvement',1),('Rogue',20,'Stroke of Luck',1),('Sorcerer',1,'',1),('Sorcerer',2,'Font of Magic',1),('Sorcerer',3,'Metamagic',1),('Sorcerer',4,'Ability Score Improvement',1),('Sorcerer',5,'',1),('Sorcerer',6,'Sorcerous Origin feature',1),('Sorcerer',7,'',1),('Sorcerer',8,'Ability Score Improvement',1),('Sorcerer',9,'',1),('Sorcerer',10,'Metamagic',1),('Sorcerer',11,'',1),('Sorcerer',12,'Ability Score Improvement',1),('Sorcerer',13,'',1),('Sorcerer',14,'Sorcerous Origin feature',1),('Sorcerer',15,'',1),('Sorcerer',16,'Ability Score Improvement',1),('Sorcerer',17,'Metamagic',1),('Sorcerer',18,'Sorcerous Origin feature',1),('Sorcerer',19,'Ability Score Improvement',1),('Sorcerer',20,'Sorcerous Restoration',1);
 /*!40000 ALTER TABLE `class_level` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `player_character` (
 
 LOCK TABLES `player_character` WRITE;
 /*!40000 ALTER TABLE `player_character` DISABLE KEYS */;
-INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',8),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',1),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',1),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1),(5,'Ya Boi',69,10,10,10,10,10,10,'Human',1,'Rogue',3);
+INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',16),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',1),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',1),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1),(5,'Ya Boi',69,10,10,10,10,10,10,'Human',1,'Rogue',4);
 /*!40000 ALTER TABLE `player_character` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,6 +369,50 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteClass` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteClass`(
+	IN p_class_name VARCHAR(50),
+    IN p_user_id INT
+)
+BEGIN
+	DELETE FROM class where class_name = p_class_name AND user_id = p_user_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `deleteRace` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteRace`(
+	IN p_race_name VARCHAR(50),
+    IN p_user_id INT
+)
+BEGIN
+	DELETE FROM race where race_name = p_race_name AND user_id = p_user_id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `getCharacters` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -563,4 +607,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-13  1:20:17
+-- Dump completed on 2018-04-13 14:58:22
