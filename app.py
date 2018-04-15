@@ -204,6 +204,54 @@ def deleteCharacter():
         cursor.close()
         conn.close()
 
+@app.route('/deleteRace', methods=['POST'])
+def deleteRace():
+    try:
+        if session.get('user'):
+            _race_id = request.form['id']
+            _user = session.get('user')
+            _name = request.form['name']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('deleteRace', (_name,_race_id,_user))
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'status': 'OK'})
+            else:
+                return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/deleteClass', methods=['POST'])
+def deleteClass():
+    try:
+        if session.get('user'):
+            _class_id = request.form['id']
+            _user = session.get('user')
+            _name = request.form['name']
+
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.callproc('deleteClass', (_name,_class_id,_user))
+            data = cursor.fetchall()
+
+            if len(data) is 0:
+                conn.commit()
+                return json.dumps({'status': 'OK'})
+            else:
+                return json.dumps({'status':'ERROR'})
+    except Exception as e:
+        return json.dumps({'status':'Unauthorized access'})
+    finally:
+        cursor.close()
+        conn.close()
+
 @app.route('/addRace',methods=['POST'])
 def addRace():
     try:

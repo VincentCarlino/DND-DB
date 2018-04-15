@@ -2,7 +2,7 @@
 <html lang="en">
  
 <head>
-    <title>Python Flask Bucket List App</title>
+    <title>D&D Tracking App</title>
  
  
     <script src="../static/js/jquery-3.3.1.min.js"></script>
@@ -14,7 +14,9 @@
                 success: function(res){
                     var div = $('<div>')
         .attr('class', 'list-group')
-        .append($('<a>')
+        .append(
+            $('<a>').attr('class', 'modify delete').text('x'),
+            $('<a>')
             .attr('class', 'list-group-item active')
             .append($('<h4>')
                 .attr('class', 'list-group-item-heading'),
@@ -30,6 +32,8 @@
                     $.each(classObj,function(index, value){
                         c = $(div).clone();
                         console.log(value);
+                        $(c).find('.modify').attr('data-id', value[2]).attr('name-id', value[0]);
+                        $(c).find('.delete').attr('onclick', "onClickMod(this, \"/deleteClass\")");
                         $(c).find('h4').text(value[0]);
                         $(c).find('p').text(value[1]);
                         $('.jumbotron').append(c);
@@ -40,8 +44,27 @@
                 }
             });
         });
+
+        function onClickMod(elm, type) {
+            $.ajax({
+                url : type,
+                data : {
+                    id: $(elm).attr('data-id'),
+                    name: $(elm).attr('name-id')
+                },
+                type : 'POST',
+                success: function(res) {
+                    console.log(res);
+                    window.setTimeout(function(){location.reload()}, 1500)
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
         </script>
         <link href="../static/reset.css" rel="stylesheet">
+        <link href="../static/show.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
  
 </head>

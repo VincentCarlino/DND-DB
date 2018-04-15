@@ -1,0 +1,7 @@
+.stats {
+    display: flex;
+}
+
+.stat {
+    max-width: 40px;
+}

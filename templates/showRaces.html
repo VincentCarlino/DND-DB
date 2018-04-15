@@ -2,7 +2,7 @@
 <html lang="en">
  
 <head>
-    <title>Python Flask Bucket List App</title>
+    <title>D&D Tracking App</title>
  
  
     <script src="../static/js/jquery-3.3.1.min.js"></script>
@@ -16,7 +16,9 @@
         .attr('class', 'list-group')
         .append($('<a>')
             .attr('class', 'list-group-item active')
-            .append($('<h4>')
+            .append(
+                $('<a>').attr('class', 'modify delete').html('x'),
+                $('<h4>')
                 .attr('class', 'list-group-item-heading'),
                 $('<p>')
                 .attr('class', 'list-group-item-text')));
@@ -30,6 +32,8 @@
                     $.each(raceObj,function(index, value){
                         r = $(div).clone();
                         console.log(value);
+                        $(r).find('.modify').attr('data-id', value[3]).attr('name-id', value[0]);
+                        $(r).find('.delete').attr('onclick', "onClickMod(this, \"/deleteRace\")");
                         $(r).find('h4').text(value[0]);
                         $(r).find('p').text(value[1]);
                         $(r).css("margin-bottom", "20px")
@@ -41,7 +45,26 @@
                 }
             });
         });
+
+        function onClickMod(elm, type) {
+            $.ajax({
+                url : type,
+                data : {
+                    id: $(elm).attr('data-id'),
+                    name: $(elm).attr('name-id')
+                },
+                type : 'POST',
+                success: function(res) {
+                    console.log(res);
+                    window.setTimeout(function(){location.reload()}, 1500)
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
+        }
         </script>
+        <link href="../static/show.css" rel="stylesheet">
         <link href="../static/reset.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
  

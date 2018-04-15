@@ -1,0 +1,21 @@
+.list-group {
+    width: 800px;
+    margin: 0 auto;
+    background: #f7f7f7;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 3px 9px 25px -7px rgba(0,0,0,0.37);
+}
+
+.list-group > * {
+    color: black;
+    
+}
+
+.list-group-item {
+    color: black;
+}
+
+.list-group-item > * {
+    color: black;
+}

@@ -101,3 +101,29 @@ nav {
 	left: 20px;
 	bottom: 20px;
 }
+
+textarea {
+	border-radius: 10px;
+	max-width: 20%;
+	box-shadow: 3px 9px 25px -7px rgba(0,0,0,0.37);
+}
+
+select {
+	max-width: 20%;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 800px;
+	margin: 0 auto;
+	align-items: center;
+}
+
+form > * {
+	margin: 20px;
+}
+
+.modify {
+	cursor: pointer;
+}
