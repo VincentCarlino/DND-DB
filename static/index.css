@@ -1,0 +1,21 @@
+.button-wrap {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.button {
+    border: solid white;
+    margin: 50px;
+    padding: 30px 10px;
+    border-radius: 20px;
+    font-size: 35px;
+    box-shadow: 3px 9px 25px -7px rgba(0,0,0,0.37);
+}
+
+.button:hover {
+    color: #4285F4;
+    background: white;
+}

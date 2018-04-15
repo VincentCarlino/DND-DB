@@ -1,0 +1,6 @@
+.modify {
+    display: flex;
+    align-items: right;
+    flex-direction: row-reverse;
+    height: 0;
+}
