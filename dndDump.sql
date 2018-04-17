@@ -101,7 +101,7 @@ CREATE TABLE `player_character` (
   CONSTRAINT `characater_class_fk` FOREIGN KEY (`class_name`) REFERENCES `class` (`class_name`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `character_race_fk` FOREIGN KEY (`character_race`) REFERENCES `race` (`race_name`),
   CONSTRAINT `player_character_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `player_character` (
 
 LOCK TABLES `player_character` WRITE;
 /*!40000 ALTER TABLE `player_character` DISABLE KEYS */;
-INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',16),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',4),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',2),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1),(5,'Ya Boi',69,10,10,10,10,10,10,'Human',1,'Rogue',4);
+INSERT INTO `player_character` VALUES (1,'Toto Baggins',23,14,16,18,13,12,16,'Gnome',1,'Bard',17),(2,'Thikskul Pitback',23,20,24,12,11,17,16,'Dwarf',2,'Barbarian',4),(3,'Agnes Shepard',47,16,11,21,14,15,8,'Human',2,'Sorcerer',2),(4,'Patrick Shepar',20,20,20,20,20,20,20,'Human',3,'Rogue',1),(10,'Randy Mushwood',77,1,1,2,19,20,23,'Gnome',1,'Sorcerer',14),(11,'Bruno the Brave',23,10,12,17,12,2,19,'Tiefling',30,'Paladin',10);
 /*!40000 ALTER TABLE `player_character` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,7 +155,7 @@ CREATE TABLE `users` (
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin','admin'),(2,'Vincent','Carlino.v@husky.neu.edu','password'),(3,'RobB0SS','painting4squares@yahoo.com','password'),(28,'user1','user1@gmail.com','password'),(29,'user','user@email.com','password');
+INSERT INTO `users` VALUES (1,'admin','admin','admin'),(2,'Vincent','Carlino.v@husky.neu.edu','password'),(3,'RobB0SS','painting4squares@yahoo.com','password'),(28,'user1','user1@gmail.com','password'),(29,'user','user@email.com','password'),(30,'darklord97','kittenparade@yahoo.com','everyvillainislemons');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,9 +318,9 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`(
-    IN p_username VARCHAR(20),
-    IN p_email VARCHAR(20),
-    IN p_password VARCHAR(20)
+    IN p_username VARCHAR(50),
+    IN p_email VARCHAR(255),
+    IN p_password VARCHAR(255)
 )
 BEGIN
     if ( select exists (select 1 from users where users.username = p_username) ) THEN
@@ -611,4 +611,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-15 12:33:52
+-- Dump completed on 2018-04-16 23:06:36
