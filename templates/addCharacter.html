@@ -33,26 +33,28 @@
                 <textarea class="form-control" id="txtPost" placeholder="Name" name="inputName"></textarea>
                 <textarea class="form-control" id="txtPost" placeholder="Age" name="inputAge" type="number"></textarea>
                 <div class="stats">
-                    <textarea class="form-control stat" id="txtPost" placeholder="Str" name="inputStr" type="number"></textarea>
-                    <textarea class="form-control stat" id="txtPost" placeholder="Dex" name="inputDex" type="number"></textarea>
-                    <textarea class="form-control stat" id="txtPost" placeholder="Con" name="inputCon" type="number"></textarea>
-                    <textarea class="form-control stat" id="txtPost" placeholder="Wis" name="inputWis" type="number"></textarea>
-                    <textarea class="form-control stat" id="txtPost" placeholder="Int" name="inputInt" type="number"></textarea>
-                    <textarea class="form-control stat" id="txtPost" placeholder="Cha" name="inputCha" type="number"></textarea>
+                    <input class="form-control stat" id="txtPost" placeholder="Str" name="inputStr" type="number"></input>
+                    <input class="form-control stat" id="txtPost" placeholder="Dex" name="inputDex" type="number"></input>
+                    <input class="form-control stat" id="txtPost" placeholder="Con" name="inputCon" type="number"></input>
+                    <input class="form-control stat" id="txtPost" placeholder="Wis" name="inputWis" type="number"></input>
+                    <input class="form-control stat" id="txtPost" placeholder="Int" name="inputInt" type="number"></input>
+                    <input class="form-control stat" id="txtPost" placeholder="Cha" name="inputCha" type="number"></input>
                 </div>
-
+                <p style='margin: 0;'>Class</p>
                 <select name="inputClass" method="GET" action="/">
                     <option value="{{classes[0]}}" selected>{{classes[0]}}</option>
                     {% for class in classes[1:] %}
                     <option value="{{class}}">{{class}}</option>
                     {% endfor %}
                 </select>
+                <p style='margin: 0;'>Level</p>
                 <select name="inputLevel">
                     <option value="1" selected>1</option>
                     {% for x in range(2, 21) %}
                         <option value="{{x}}">{{x}}</option>
                     {% endfor %}
                 </select>
+                <p style='margin: 0;'>Race</p>
                 <select name="inputRace" method="GET" action="/">
                     <option value="{{races[0]}}" selected>{{races[0]}}</option>
                     {% for race in races[1:] %}
