@@ -8,6 +8,7 @@
 
     <script src="../static/js/jquery-3.3.1.min.js"></script>
     <link href="../static/reset.css" rel="stylesheet">
+    <link href="../static/create.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Open+Sans" rel="stylesheet">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
@@ -34,15 +35,12 @@
             <form class="form-horizontal" method="post" action="/addWish">
                 <fieldset>
  
-                    <!-- Form Name -->
-                    <h2>Create an Entry</h2>
- 
+                <h2>Create an Entry</h2>
+                <div class="flex" style='display: flex;'>
                     <a href="/showAddCharacter">Character</a>
-                    <!-- Button -->
                     <a href="/showAddRace">Race</a>
-                    <!-- Button -->
                     <a href="/showAddClass">Class</a>
- 
+                </div>
                 </fieldset>
             </form>
  

@@ -1,4 +1,3 @@
-from __future__ import print_function
 from flask import Flask, render_template, json, request, redirect, url_for, session
 from flask.ext.mysql import MySQL
 import getpass
@@ -87,8 +86,6 @@ def showAddCharacter():
         for r in races:
             races_arr.append(r[0])
 
-        print(classes_arr, file=sys.stderr)
-        print(races_arr, file=sys.stderr)
         return render_template('addCharacter.html', classes=classes_arr, races=races_arr)
     else:
         return render_template('signin.html')
@@ -135,8 +132,6 @@ def levelUp():
         if session.get('user'):
 
             _character_id = request.form['id']
-  
-            print(_character_id, file=sys.stderr)
 
             conn = mysql.connect()
             cursor = conn.cursor()
@@ -160,8 +155,6 @@ def levelDown():
         if session.get('user'):
 
             _character_id = request.form['id']
-  
-            print(_character_id, file=sys.stderr)
             
             conn = mysql.connect()
             cursor = conn.cursor()
@@ -185,8 +178,6 @@ def deleteCharacter():
         if session.get('user'):
 
             _character_id = request.form['id']
-  
-            print(_character_id, file=sys.stderr)
             
             conn = mysql.connect()
             cursor = conn.cursor()
@@ -361,7 +352,6 @@ def getCharacters():
             cursor = con.cursor()
             cursor.callproc('getCharacters', (_user,))
             characters = cursor.fetchall()
-            print(characters, file=sys.stderr)
 
             characters_json = []
             for c in characters:
