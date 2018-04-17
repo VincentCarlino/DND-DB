@@ -35,6 +35,6 @@ Enter your MySQL username and password, and go to `localhost:5000` in your brows
 
 Either sign in as one of the users in the database or sign up with a new account.
 
-The web app currently supports creating new races, classes, and characters using classes and races available to the user (all races and classes made by that user as well as all admin races and classes)
+The web app currently supports creating new races, classes, and characters using classes and races available to the user (all races and classes made by that user as well as all admin races and classes).  I've included a PDF copy of the handbook if you need inspiration for creating a race or class.  
 
 Once an entity is created, a user can choose to delete it using the 'x' button on that entity.  Characters can be leveled up or down using the plus and minus buttons on that character.
